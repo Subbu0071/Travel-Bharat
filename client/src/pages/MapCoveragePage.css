@@ -1,0 +1,206 @@
+/* Mind-blowing coverage map UI */
+
+.coverage-hero {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  box-shadow: 0 12px 30px rgba(23, 33, 31, 0.06);
+  margin-bottom: 18px;
+}
+
+.coverage-ring {
+  width: 240px;
+  height: 240px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(31, 122, 92, 0.12), rgba(31, 122, 92, 0.02) 55%, transparent 70%),
+    linear-gradient(180deg, rgba(31, 122, 92, 0.08), rgba(31, 122, 92, 0.02));
+  border: 1px solid rgba(31, 122, 92, 0.18);
+}
+
+.coverage-ring-progress {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--leaf) 0% var(--progress),
+    rgba(31, 122, 92, 0.12) var(--progress) 100%
+  );
+  filter: drop-shadow(0 8px 22px rgba(31, 122, 92, 0.22));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 18px), #000 calc(100% - 18px));
+}
+
+.coverage-ring-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.coverage-pct {
+  font-size: 3.2rem;
+  font-weight: 950;
+  color: var(--leaf-dark);
+  line-height: 1;
+}
+
+.coverage-sub {
+  color: var(--muted);
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+}
+
+.coverage-controls {
+  display: grid;
+  gap: 14px;
+  align-items: start;
+}
+
+.coverage-search span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 750;
+  margin-bottom: 6px;
+}
+
+.coverage-search input {
+  min-height: 46px;
+}
+
+.coverage-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.coverage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--mist);
+  font-weight: 850;
+  color: var(--muted);
+}
+
+.coverage-badge.visited {
+  background: rgba(31, 122, 92, 0.08);
+  border-color: rgba(31, 122, 92, 0.25);
+  color: var(--leaf-dark);
+}
+
+.coverage-badge .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--leaf);
+  box-shadow: 0 0 0 6px rgba(31, 122, 92, 0.14);
+}
+
+.coverage-badge .dot.dim {
+  background: rgba(31, 122, 92, 0.25);
+  box-shadow: none;
+}
+
+.coverage-map-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.coverage-column {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  padding: 16px;
+}
+
+.coverage-col-title {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  color: var(--leaf-dark);
+}
+
+.coverage-state-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.state-chip {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 10px 12px;
+  cursor: pointer;
+  min-height: 40px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.state-chip .chip-name {
+  font-weight: 900;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.state-chip .chip-arrow {
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.state-chip.visited {
+  background: rgba(31, 122, 92, 0.08);
+  border-color: rgba(31, 122, 92, 0.35);
+  box-shadow: 0 0 0 6px rgba(31, 122, 92, 0.09) inset;
+}
+
+.state-chip.visited .chip-spark {
+  color: var(--marigold);
+  filter: drop-shadow(0 10px 16px rgba(216, 136, 23, 0.34));
+}
+
+.chip-spark {
+  font-weight: 950;
+  opacity: 0.95;
+}
+
+.coverage-empty {
+  color: var(--muted);
+  font-weight: 850;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px dashed var(--line);
+}
+
+@media (max-width: 900px) {
+  .coverage-hero {
+    grid-template-columns: 1fr;
+  }
+  .coverage-ring {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  .coverage-map-shell {
+    grid-template-columns: 1fr;
+  }
+}
+

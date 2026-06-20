@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TravelBharat is a state-wise India tourism encyclopedia for discovering destinations, culture, heritage, nature, and travel insights."
+    />
+    <title>TravelBharat - Explore India State by State</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="TravelBharat home">
+        <span class="brand-mark">TB</span>
+        <span>TravelBharat</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#home">Explore</a>
+        <a href="#states">States</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#admin">Admin</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Incredible India, organized for curious travelers</p>
+          <h1>TravelBharat</h1>
+          <p>
+            Explore Indian destinations state by state with structured details,
+            cultural context, best seasons, nearby attractions, and visual guides.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#destinations">Start exploring</a>
+            <a class="button ghost" href="#admin">Manage content</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section stats-band" aria-label="Platform highlights">
+        <div>
+          <strong id="stateCount">0</strong>
+          <span>States and UTs</span>
+        </div>
+        <div>
+          <strong id="destinationCount">0</strong>
+          <span>Curated places</span>
+        </div>
+        <div>
+          <strong>4</strong>
+          <span>Core categories</span>
+        </div>
+        <div>
+          <strong>&lt;2s</strong>
+          <span>Target load time</span>
+        </div>
+      </section>
+
+      <section class="section finder" id="destinations">
+        <div class="section-heading">
+          <p class="eyebrow">Search and discovery</p>
+          <h2>Find destinations by state, city, or category</h2>
+        </div>
+        <div class="filters" role="search">
+          <label>
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Taj Mahal, Rajasthan, nature..." />
+          </label>
+          <label>
+            <span>State</span>
+            <select id="stateFilter"></select>
+          </label>
+          <label>
+            <span>City</span>
+            <select id="cityFilter"></select>
+          </label>
+          <label>
+            <span>Category</span>
+            <select id="categoryFilter"></select>
+          </label>
+        </div>
+        <div class="results-meta">
+          <p id="resultSummary"></p>
+          <button class="button compact" id="resetFilters" type="button">Reset</button>
+        </div>
+        <div class="destination-grid" id="destinationGrid"></div>
+      </section>
+
+      <section class="section states" id="states">
+        <div class="section-heading">
+          <p class="eyebrow">State-wise listings</p>
+          <h2>Browse India through regional tourism clusters</h2>
+        </div>
+        <div class="state-grid" id="stateGrid"></div>
+      </section>
+
+      <section class="section detail-panel" id="placeDetail" hidden>
+        <div class="detail-layout">
+          <div>
+            <p class="eyebrow" id="detailCategory"></p>
+            <h2 id="detailName"></h2>
+            <p id="detailDescription"></p>
+            <dl class="facts">
+              <div>
+                <dt>State</dt>
+                <dd id="detailState"></dd>
+              </div>
+              <div>
+                <dt>City</dt>
+                <dd id="detailCity"></dd>
+              </div>
+              <div>
+                <dt>Best time</dt>
+                <dd id="detailBestTime"></dd>
+              </div>
+              <div>
+                <dt>Timings and fees</dt>
+                <dd id="detailFees"></dd>
+              </div>
+            </dl>
+            <h3>Nearby attractions</h3>
+            <ul id="detailNearby" class="nearby-list"></ul>
+            <a id="detailMap" class="button primary" href="#" target="_blank" rel="noreferrer">Open map</a>
+          </div>
+          <div class="gallery" id="detailGallery" aria-label="Image gallery"></div>
+        </div>
+      </section>
+
+      <section class="section admin" id="admin">
+        <div class="section-heading">
+          <p class="eyebrow">Admin management</p>
+          <h2>Add and verify tourism content</h2>
+        </div>
+        <form id="destinationForm" class="admin-form">
+          <label>
+            <span>Place name</span>
+            <input name="name" required placeholder="Gateway of India" />
+          </label>
+          <label>
+            <span>State or UT</span>
+            <input name="state" required placeholder="Maharashtra" />
+          </label>
+          <label>
+            <span>City</span>
+            <input name="city" required placeholder="Mumbai" />
+          </label>
+          <label>
+            <span>Category</span>
+            <select name="category" required>
+              <option>Heritage</option>
+              <option>Nature</option>
+              <option>Adventure</option>
+              <option>Religious</option>
+            </select>
+          </label>
+          <label class="wide">
+            <span>Description and significance</span>
+            <textarea name="description" required rows="4" placeholder="Write verified destination details..."></textarea>
+          </label>
+          <label>
+            <span>Best time to visit</span>
+            <input name="bestTime" required placeholder="October to March" />
+          </label>
+          <label>
+            <span>Entry fees and timings</span>
+            <input name="fees" required placeholder="Open daily, fee varies" />
+          </label>
+          <label>
+            <span>Map link</span>
+            <input name="map" type="url" required placeholder="https://maps.google.com/..." />
+          </label>
+          <label>
+            <span>Image URL</span>
+            <input name="image" type="url" required placeholder="https://..." />
+          </label>
+          <label class="wide">
+            <span>Nearby attractions</span>
+            <input name="nearby" required placeholder="Museum, Fort, Lake" />
+          </label>
+          <div class="form-actions wide">
+            <button class="button primary" type="submit">Add destination</button>
+            <button class="button compact" id="clearLocalData" type="button">Reset demo data</button>
+          </div>
+        </form>
+        <p class="admin-note" id="adminStatus" role="status"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>TravelBharat supports structured tourism research, domestic travel awareness, and future booking integrations.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
