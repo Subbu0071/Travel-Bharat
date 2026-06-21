@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE || "http://127.0.0.1:5000/api";
+const API_BASE = "https://travel-bharat-0z4u.onrender.com/api";
 const tokenKey = "travelbharat-admin-token";
 
 export function getToken() {
@@ -16,14 +16,14 @@ export function clearToken() {
 export async function api(path, options = {}) {
   const headers = {
     "Content-Type": "application/json",
-    ...(options.headers || {})
+    ...(options.headers || {}),
   };
   const token = getToken();
   if (token) headers.Authorization = `Bearer ${token}`;
 
   const response = await fetch(`${API_BASE}${path}`, {
     ...options,
-    headers
+    headers,
   });
 
   if (response.status === 204) return null;
